@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="AliMartinCv.Core/AliMartinCv.Core.csproj" />
+  <Project Path="AliMartinCv.Data/AliMartinCv.Data.csproj" />
+  <Project Path="AliMartinCv.Tools/AliMartinCv.Tools.csproj" />
+  <Project Path="AliMartinCv/AliMartinCv.csproj" />
+</Solution>
