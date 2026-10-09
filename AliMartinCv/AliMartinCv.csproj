@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AliMartinCv.Core\AliMartinCv.Core.csproj" />
     <ProjectReference Include="..\AliMartinCv.Data\AliMartinCv.Data.csproj" />
   </ItemGroup>
 
