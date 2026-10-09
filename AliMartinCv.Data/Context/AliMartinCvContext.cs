@@ -15,5 +15,6 @@ namespace AliMartinCv.Data.Context
         public DbSet<User> Users { get; set; }
         public DbSet<ArticleGroup> ArticleGroups { get; set; }
         public DbSet<Article> Articles { get; set; }
+        public DbSet<Project> Projects { get; set; }
     }
 }

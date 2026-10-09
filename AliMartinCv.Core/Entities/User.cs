@@ -14,5 +14,9 @@ namespace AliMartinCv.Core.Entities
         public required string Password { get; set; }
         public required string Email { get; set; }
 
+        #region Relations
+
+        public ICollection<Project> Projects { get; set; } = new List<Project>();
+        #endregion
     }
 }
