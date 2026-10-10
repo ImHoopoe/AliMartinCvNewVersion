@@ -7,10 +7,10 @@ namespace AliMartinCv.Core.Interfaces.Repositories
 {
     public interface IArticleGroupRepository
     {
-        Task<bool> Create(ArticleGroup articleGroup);
-        Task<bool> Update(ArticleGroup articleGroup);
-        Task<bool> Delete(ArticleGroup articleGroup);
-        Task<ArticleGroup> GetArticleGroup(int articleGroupId);
-        Task<IEnumerable<ArticleGroup>> GetArticleGroups();
+        Task<bool> CreateAsync(ArticleGroup articleGroup);
+        Task<bool> UpdateAsync(ArticleGroup articleGroup);
+        Task<bool> DeleteAsync(ArticleGroup articleGroup);
+        Task<ArticleGroup> GetArticleGroupAsync(int articleGroupId);
+        Task<IEnumerable<ArticleGroup>> GetArticleGroupsAsync();
     }
 }

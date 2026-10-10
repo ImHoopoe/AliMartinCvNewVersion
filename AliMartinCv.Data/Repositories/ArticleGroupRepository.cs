@@ -18,7 +18,7 @@ namespace AliMartinCv.Data.Repositories
 
 
 
-        public async Task<bool> Create(ArticleGroup articleGroup)
+        public async Task<bool> CreateAsync(ArticleGroup articleGroup)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace AliMartinCv.Data.Repositories
             }
         }
 
-        public async Task<bool> Delete(ArticleGroup articleGroup)
+        public async Task<bool> DeleteAsync(ArticleGroup articleGroup)
         {
             try
             {
@@ -48,17 +48,17 @@ namespace AliMartinCv.Data.Repositories
             }
         }
 
-        public async Task<ArticleGroup> GetArticleGroup(int articleGroupId)
+        public async Task<ArticleGroup> GetArticleGroupAsync(int articleGroupId)
         {
             return await _context.ArticleGroups.FindAsync(articleGroupId);
         }
 
-        public async Task<IEnumerable<ArticleGroup>> GetArticleGroups()
+        public async Task<IEnumerable<ArticleGroup>> GetArticleGroupsAsync()
         {
            return await _context.ArticleGroups.ToListAsync();
         }
 
-        public async Task<bool> Update(ArticleGroup articleGroup)
+        public async Task<bool> UpdateAsync(ArticleGroup articleGroup)
         {
             try
             {

@@ -8,20 +8,20 @@ using System.Text;
 
 namespace AliMartinCv.Data.Repositories
 {
-    public class ArticleRepository : IArticleRepository
+    public class ProjectRepository : IProjectRepository
     {
         private readonly AliMartinCvContext _context;
-        public ArticleRepository(AliMartinCvContext context)
+        public ProjectRepository(AliMartinCvContext context)
         {
             _context = context;
         }
 
 
-        public async Task<bool> CreateAsync(Article article)
+        public async Task<bool> CreateAsync(Project project)
         {
             try
             {
-                await _context.Articles.AddAsync(article);
+                await _context.Projects.AddAsync(project);
                 await _context.SaveChangesAsync();
                 return true;
             }
@@ -32,11 +32,11 @@ namespace AliMartinCv.Data.Repositories
             }
         }
 
-        public async Task<bool> DeleteAsync(Article article)
+        public async Task<bool> DeleteAsync(Project project)
         {
             try
             {
-                _context.Articles.Remove(article);
+                _context.Projects.Remove(project);
                 await _context.SaveChangesAsync();
                 return true;
             }
@@ -47,26 +47,21 @@ namespace AliMartinCv.Data.Repositories
             }
         }
 
-        public async Task<Article> GetArticleAsync(int articleId)
+        public async Task<Project> GetProject(int id)
         {
-            return await _context.Articles.FindAsync(articleId);
+            return await _context.Projects.FindAsync(id);
         }
 
-        public async Task<Article> GetArticleAsync(string slug)
+        public async Task<IEnumerable<Project>> GetProjectsAsync()
         {
-            return await _context.Articles.SingleOrDefaultAsync(a=> a.Slug == slug);
+            return await _context.Projects.ToListAsync();
         }
 
-        public async Task<IEnumerable<Article>> GetArticlesAsync()
-        {
-            return await _context.Articles.ToListAsync();
-        }
-
-        public async Task<bool> UpdateAsync(Article article)
+        public async Task<bool> UpdateAsync(Project project)
         {
             try
             {
-                _context.Articles.Update(article);
+                _context.Projects.Update(project);
                 await _context.SaveChangesAsync();
                 return true;
             }

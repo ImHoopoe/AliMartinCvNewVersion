@@ -18,7 +18,7 @@ namespace AliMartinCv.Data.Repositories
         }
 
 
-        public async Task<bool> Create(User user)
+        public async Task<bool> CreateAsync(User user)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace AliMartinCv.Data.Repositories
             }
         }
 
-        public async Task<bool> Delete(User user)
+        public async Task<bool> DeleteAsync(User user)
         {
             try
             {
@@ -48,23 +48,23 @@ namespace AliMartinCv.Data.Repositories
             }
         }
 
-        public async Task<User> GetByEmail(string email)
+        public async Task<User> GetByEmailAsync(string email)
         {
             //AMirHoSse in@g mail.C O M => AMirHoSsein@gmail.COM => amirhossein@gmail.com
             return await _context.Users.SingleOrDefaultAsync(u => u.Email.ToLower().Trim() == email.ToLower().Trim());
         }
 
-        public async Task<User> GetUser(int userId)
+        public async Task<User> GetUserAsync(int userId)
         {
             return await _context.Users.FindAsync(userId);
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<IEnumerable<User>> GetUsersAsync()
         {
             return await _context.Users.ToListAsync();
         }
 
-        public async Task<bool> Update(User user)
+        public async Task<bool> UpdateAsync(User user)
         {
             try
             {

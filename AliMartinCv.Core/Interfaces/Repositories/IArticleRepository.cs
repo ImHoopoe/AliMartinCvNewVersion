@@ -8,12 +8,12 @@ namespace AliMartinCv.Core.Interfaces.Repositories
 
     public interface IArticleRepository
     {
-        Task<bool> Create(Article article);
-        Task<bool> Update(Article article);
-        Task<bool> Delete(Article article);
-        Task<Article> GetArticle(int articleId);
-        Task<Article> GetArticle(string slug);
-        Task<IEnumerable<Article>> GetArticles();
+        Task<bool> CreateAsync(Article article);
+        Task<bool> UpdateAsync(Article article);
+        Task<bool> DeleteAsync(Article article);
+        Task<Article> GetArticleAsync(int articleId);
+        Task<Article> GetArticleAsync(string slug);
+        Task<IEnumerable<Article>> GetArticlesAsync();
 
     }
 
