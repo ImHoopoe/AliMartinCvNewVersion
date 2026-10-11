@@ -21,4 +21,8 @@
     <ProjectReference Include="..\AliMartinCv.Data\AliMartinCv.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Views\" />
+  </ItemGroup>
+
 </Project>
