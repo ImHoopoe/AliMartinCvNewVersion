@@ -1,4 +1,6 @@
 using AliMartinCv.Core.Interfaces.Repositories;
+using AliMartinCv.Core.Interfaces.Service;
+using AliMartinCv.Core.Services;
 using AliMartinCv.Data.Context;
 using AliMartinCv.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +19,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IArticleGroupRepository, ArticleGroupRepository>();
 builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<IArticleGroup, ArticleGroupService>();
 
 var app = builder.Build();
 

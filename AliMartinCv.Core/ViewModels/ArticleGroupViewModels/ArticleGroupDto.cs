@@ -6,8 +6,8 @@ namespace AliMartinCv.Core.ViewModels.ArticleGroupViewModels
 {
     public class ArticleGroupDto
     {
-        public required int Id { get; set; }
-        public required string Title { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
         public string? ParentTitle { get; set; }
         public int? ParentId { get; set; }
 

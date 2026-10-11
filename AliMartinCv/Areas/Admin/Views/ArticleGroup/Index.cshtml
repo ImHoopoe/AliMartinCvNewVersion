@@ -1,0 +1,41 @@
+﻿@using AliMartinCv.Core.ViewModels.ArticleGroupViewModels
+@model IEnumerable<ArticleGroupDto>
+@{
+    Layout = "/areas/admin/views/shared/_Layout.cshtml";
+}
+<div class="row">
+    <a asp-controller="ArticleGroup" asp-action="Create" class="btn btn-outline-success col-1"><i class="fa fa-plus" aria-hidden="true"></i></a>
+</div>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">نام گروه</th>
+            <th scope="col">زیر گروه</th>
+            <th scope="col">عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var articleGroup in Model.Where(ag=> ag.ParentId==null))
+        {
+            <tr>
+                <td>@articleGroup.Title</td>
+                <td>
+                    @foreach (var child in Model.Where(cg=> cg.ParentId==articleGroup.Id))
+                    {
+                        <p>@child.Title</p>
+                        <a asp-controller="ArticleGroup" asp-action="Detail" class="btn btn-sm btn-outline-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                        <a asp-controller="ArticleGroup" asp-action="Edit" class="btn btn-sm btn-outline-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a asp-controller="ArticleGroup" asp-action="Delete" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    }
+                </td>
+                <td>
+                    <a asp-controller="ArticleGroup" asp-action="Detail" class="btn btn-sm btn-outline-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                    <a asp-controller="ArticleGroup" asp-action="Edit" class="btn btn-sm btn-outline-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a asp-controller="ArticleGroup" asp-action="Delete" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+        }
+        
+    </tbody>
+</table>
+
