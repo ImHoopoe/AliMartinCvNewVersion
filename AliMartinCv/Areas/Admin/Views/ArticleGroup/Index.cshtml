@@ -3,6 +3,23 @@
 @{
     Layout = "/areas/admin/views/shared/_Layout.cshtml";
 }
+@{
+    if(TempData["Error"]!= null)
+    {
+        <div class="alert alert-danger">
+            <p>@TempData["Error"]</p>
+        </div>
+    }
+}
+
+@{
+    if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success">
+            <p>@TempData["Message"]</p>
+        </div>
+    }
+}
 <div class="row">
     <a asp-controller="ArticleGroup" asp-action="Create" class="btn btn-outline-success col-1"><i class="fa fa-plus" aria-hidden="true"></i></a>
 </div>
@@ -23,15 +40,15 @@
                     @foreach (var child in Model.Where(cg=> cg.ParentId==articleGroup.Id))
                     {
                         <p>@child.Title</p>
-                        <a asp-controller="ArticleGroup" asp-action="Detail" class="btn btn-sm btn-outline-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                        <a asp-controller="ArticleGroup" asp-action="Edit" class="btn btn-sm btn-outline-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        <a asp-controller="ArticleGroup" asp-action="Delete" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a asp-controller="ArticleGroup" asp-action="Detail" asp-route-id="@child.Id" class="btn btn-sm btn-outline-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                        <a asp-controller="ArticleGroup" asp-action="Edit" asp-route-id ="@child.Id" class="btn btn-sm btn-outline-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a asp-controller="ArticleGroup" asp-action="Delete" asp-route-id="@child.Id" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     }
                 </td>
                 <td>
-                    <a asp-controller="ArticleGroup" asp-action="Detail" class="btn btn-sm btn-outline-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                    <a asp-controller="ArticleGroup" asp-action="Edit" class="btn btn-sm btn-outline-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a asp-controller="ArticleGroup" asp-action="Delete" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    <a asp-controller="ArticleGroup" asp-action="Detail" asp-route-id="@articleGroup.Id" class="btn btn-sm btn-outline-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                    <a asp-controller="ArticleGroup" asp-action="Edit" asp-route-id="@articleGroup.Id" class="btn btn-sm btn-outline-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a asp-controller="ArticleGroup" asp-action="Delete" asp-route-id="@articleGroup.Id" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 </td>
             </tr>
         }

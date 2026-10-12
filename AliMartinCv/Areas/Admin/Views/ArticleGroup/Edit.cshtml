@@ -1,0 +1,32 @@
+﻿@using AliMartinCv.Core.ViewModels.ArticleGroupViewModels
+@model UpdateArticleGroupDto
+@{
+    Layout = "/areas/admin/views/shared/_Layout.cshtml";
+}
+@{
+    if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            <p>@TempData["Error"]</p>
+        </div>
+    }
+}
+<form method="post" asp-action="Edit">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">نام گروه خبری</label>
+            <input asp-for="Title" type="text" class="form-control" id="inputEmail4" placeholder="نام گروه">
+        </div>
+    </div>
+ 
+    <div class="form-row">
+        
+        <div class="form-group col-md-4">
+            <label for="inputState">گروه اصلی</label>
+            <select asp-for="ParentId" asp-items="Model.ArticleGroups" id="inputState" class="form-control" novalidate>
+                <option value="" selected>انتخاب کنید(اختیاری)...</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-warning">ذخیره</button>
+</form>

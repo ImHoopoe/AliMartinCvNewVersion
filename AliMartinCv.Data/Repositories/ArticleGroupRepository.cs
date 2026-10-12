@@ -48,10 +48,15 @@ namespace AliMartinCv.Data.Repositories
             }
         }
 
-        public async Task<ArticleGroup> GetArticleGroupAsync(int articleGroupId)
+
+        public async Task<ArticleGroup?> GetArticleGroupAsync(int articleGroupId)
         {
-            return await _context.ArticleGroups.FindAsync(articleGroupId);
+            return await _context.ArticleGroups
+                .AsNoTracking()
+                .Include(ag => ag.Parent)
+                .FirstOrDefaultAsync(ag => ag.Id == articleGroupId);
         }
+
 
         public async Task<IEnumerable<ArticleGroup>> GetArticleGroupsAsync()
         {

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace AliMartinCv.Core.ViewModels.ArticleGroupViewModels
@@ -7,8 +9,9 @@ namespace AliMartinCv.Core.ViewModels.ArticleGroupViewModels
     public class UpdateArticleGroupDto
     {
         public required int Id { get; set; }
+        [Required]
         public required string Title { get; set; }
         public int? ParentId { get; set; }
-        public ICollection<ArticleGroupDto> ArticleGroups { get; set; } = new List<ArticleGroupDto>();
+        public List<SelectListItem> ArticleGroups { get; set; } = new List<SelectListItem>();
     }
 }

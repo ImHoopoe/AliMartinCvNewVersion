@@ -1,0 +1,12 @@
+﻿@using AliMartinCv.Core.ViewModels.ArticleGroupViewModels
+@model ArticleGroupDto
+@{
+    Layout = "/areas/admin/views/shared/_Layout.cshtml";
+}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">نام گروه : @Model.Title </h5>
+        <p class="card-text">نام سر گروه : @Model.ParentTitle</p>
+        <a asp-action="Index" class="btn btn-outline-dark">بازگشت</a>
+    </div>
+</div>

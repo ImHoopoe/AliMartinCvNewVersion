@@ -13,6 +13,7 @@ namespace AliMartinCv.Core.Interfaces.Service
         Task<(bool Success, string? Message)> DeleteAsync(DeleteArticleGroupDto delete);
         Task<(ArticleGroupDto? articleGroup, string? Message)> GetArticleGroup(int id);
         Task<(IEnumerable<ArticleGroupDto> articleGroups, string? Message)> GetArticleGroups();
+        Task<(bool exists,string message)> IsExists(int id);
 
     }
 }

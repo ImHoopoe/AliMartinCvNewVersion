@@ -1,0 +1,19 @@
+﻿@using AliMartinCv.Core.ViewModels.ArticleGroupViewModels
+@model DeleteArticleGroupDto
+@{
+    Layout = "/areas/admin/views/shared/_Layout.cshtml";
+}
+@{
+    if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            <p>@TempData["Error"]</p>
+        </div>
+    }
+}
+<form method="post" asp-action="Delete">
+  <h4>آیا از سیک @Model.Title مطمئن هستید ؟</h4>
+  <input readonly="readonly" hidden="hidden" asp-for="Id" />
+    <a class="btn btn-outline-dark" asp-action="index">بازگشت</a>
+    <button type="submit" class="btn btn-outline-danger">حذف</button>
+</form>

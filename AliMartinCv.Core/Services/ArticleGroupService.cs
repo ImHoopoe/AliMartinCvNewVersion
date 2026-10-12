@@ -63,7 +63,7 @@ namespace AliMartinCv.Core.Services
                 Id = id,
                 Title = articleGroup.Title,
                 ParentId = articleGroup.ParentId,
-                //TODO : Navigate Title
+                ParentTitle = articleGroup.Parent?.Title ?? "گروه اصلی",
             };
             return (articleGroupDto, null);
         }
@@ -85,6 +85,16 @@ namespace AliMartinCv.Core.Services
             }
 
             return (articleGroupDtos, null);
+        }
+
+        public async Task<(bool exists, string message)> IsExists(int id)
+        {
+            ArticleGroup articleGroup = await _repository.GetArticleGroupAsync(id);
+            if (articleGroup==null)
+            {
+                return (false, "گروه یافت نشد");
+            }
+            return (true, "موجود");
         }
 
         public async Task<(bool Success, string? Message)> UpdateAsync(UpdateArticleGroupDto update)
