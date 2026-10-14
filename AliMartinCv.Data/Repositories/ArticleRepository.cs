@@ -62,6 +62,11 @@ namespace AliMartinCv.Data.Repositories
             return await _context.Articles.ToListAsync();
         }
 
+        public async Task<bool> IsExists(int id)
+        {
+            return await _context.Articles.AnyAsync(a => a.Id == id);
+        }
+
         public async Task<bool> UpdateAsync(Article article)
         {
             try
@@ -76,5 +81,7 @@ namespace AliMartinCv.Data.Repositories
                 return false;
             }
         }
+
+
     }
 }

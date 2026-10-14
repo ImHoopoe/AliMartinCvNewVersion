@@ -14,6 +14,7 @@ namespace AliMartinCv.Core.Interfaces.Repositories
         Task<Article> GetArticleAsync(int articleId);
         Task<Article> GetArticleAsync(string slug);
         Task<IEnumerable<Article>> GetArticlesAsync();
+        Task<bool> IsExists(int id);
 
     }
 
