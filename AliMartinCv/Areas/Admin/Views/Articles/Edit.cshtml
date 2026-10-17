@@ -1,0 +1,47 @@
+﻿@using AliMartinCv.Core.ViewModels.Article
+@{
+    Layout = "/areas/admin/views/shared/_Layout.cshtml";
+}
+@model UpdateArticleDto
+
+<form method="post" asp-action="Edit"asp-controller="Articles">
+    <div class="form-row">
+        <input value="@Model.Id" asp-for="Id" readonly="readonly" hidden="hidden" />
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">عنوان مقاله</label>
+            <input asp-for="Title" type="text" class="form-control" id="inputEmail4" placeholder="عنوان مقاله">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">اسلاگ</label>
+            <input asp-for="Slug" type="text" class="form-control" id="inputEmail4" placeholder="اسلاگ">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">توضیحات کوتاه</label>
+            <input asp-for="ShortDescription" type="text" class="form-control" id="inputEmail4" placeholder="خلاصه توضیحات">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">توضیحات</label>
+            <input asp-for="Description" type="text" class="form-control" id="inputEmail4" placeholder="توضیحات اصلی">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">تصویر</label>
+            <input asp-for="Thumbnail" type="File" class="form-control" id="inputEmail4" placeholder="تصویر">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">تگ های مقاله</label>
+            <input asp-for="Tags" type="text" class="form-control" id="inputEmail4" placeholder="تگ به عنوان مثال : ریاضی, علوم">
+        </div>
+
+    </div>
+
+    <div class="form-row">
+
+        <div class="form-group col-md-4">
+            <label for="inputState">گروه مقاله</label>
+            <select asp-for="ArticleGroupId" asp-items="Model.ArticleGroups" id="inputState" class="form-control" novalidate>
+                <option value="" selected>انتخاب کنید(اختیاری)...</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success mt-4">ذخیره</button>
+</form>

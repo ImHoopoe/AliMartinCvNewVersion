@@ -20,6 +20,7 @@ builder.Services.AddScoped<IArticleGroupRepository, ArticleGroupRepository>();
 builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IArticleGroup, ArticleGroupService>();
+builder.Services.AddScoped<IArticle, ArticleService>();
 
 var app = builder.Build();
 

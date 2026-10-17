@@ -49,7 +49,7 @@ namespace AliMartinCv.Data.Repositories
 
         public async Task<Article> GetArticleAsync(int articleId)
         {
-            return await _context.Articles.FindAsync(articleId);
+            return await _context.Articles.Include(article=> article.ArticleGroup).SingleOrDefaultAsync(article => article.Id==articleId);
         }
 
         public async Task<Article> GetArticleAsync(string slug)
@@ -59,7 +59,7 @@ namespace AliMartinCv.Data.Repositories
 
         public async Task<IEnumerable<Article>> GetArticlesAsync()
         {
-            return await _context.Articles.ToListAsync();
+            return await _context.Articles.Include(article=> article.ArticleGroup).ToListAsync();
         }
 
         public async Task<bool> IsExists(int id)

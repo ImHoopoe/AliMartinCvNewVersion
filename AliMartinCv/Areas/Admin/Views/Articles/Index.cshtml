@@ -1,0 +1,47 @@
+﻿@using AliMartinCv.Core.ViewModels.Article
+@model List<ArticleDto>
+@{
+    Layout = "/areas/admin/views/shared/_Layout.cshtml";
+}
+@{
+    if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            <p>@TempData["Error"]</p>
+        </div>
+    }
+}
+
+@{
+    if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success">
+            <p>@TempData["Message"]</p>
+        </div>
+    }
+}
+<div class="row">
+    <a asp-controller="Articles" asp-action="Create" class="btn btn-outline-success col-1"><i class="fa fa-plus" aria-hidden="true"></i></a>
+</div>
+<div>
+    <div class="row">
+        @{
+            foreach (var article in Model)
+            {
+                <div class="card mb-3 col-3">
+                    <img class="card-img-top" src="/images/articles/@article.Thumbnail" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@article.Title</h5>
+                        <p class="card-text">@article.ShortDescription</p>
+                        <p class="card-text"> دسته بندی : @article.ArticleGroup</p>
+                        <p class="card-text"><small class="text-muted">  تاریخ انتشار :@article.PublishDate </small></p>
+                    </div>
+                    <a asp-controller="Articles" asp-action="Detail" asp-route-id="@article.Id" class="btn btn-sm btn-outline-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                    <a asp-controller="Articles" asp-action="Edit" asp-route-id="@article.Id" class="btn btn-sm btn-outline-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a asp-controller="Articles" asp-action="Delete" asp-route-id="@article.Id" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </div>
+                
+            }
+        }
+    </div>
+</div>
