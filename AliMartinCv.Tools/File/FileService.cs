@@ -17,5 +17,9 @@ namespace AliMartinCv.Tools.File
             //Return Generated Name
             throw new NotImplementedException();
         }
+        public static bool DeleteImage(string ImageName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
