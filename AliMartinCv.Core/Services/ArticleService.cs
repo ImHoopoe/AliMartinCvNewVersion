@@ -2,6 +2,7 @@
 using AliMartinCv.Core.Interfaces.Repositories;
 using AliMartinCv.Core.Interfaces.Service;
 using AliMartinCv.Core.ViewModels.Article;
+using AliMartinCv.Tools.Time;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -104,13 +105,13 @@ namespace AliMartinCv.Core.Services
                     ArticleGroup = article.ArticleGroup.Title,
                     Author = article.Author,
                     Description = article.Description,
-                    PublishDate = article.PublishDate.ToString(),
+                    PublishDate = article.PublishDate.ToShamsi(),
                     ShortDescription = article.ShortDescription,
                     Slug = article.Slug,
                     Tags = article.Tags.Split(","),
                     Thumbnail = article.Thumbnail,
                     Title = article.Title,
-                    LastUpdate = article.LastUpdate.ToString(),
+                    LastUpdate = article.LastUpdate.Value.GetTimeAgo(),
                 };
                 articlesDto.Add(articleDto);
             }

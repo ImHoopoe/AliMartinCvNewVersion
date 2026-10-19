@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AliMartinCv.Core\AliMartinCv.Core.csproj" />
     <ProjectReference Include="..\AliMartinCv.Data\AliMartinCv.Data.csproj" />
+    <ProjectReference Include="..\AliMartinCv.Tools\AliMartinCv.Tools.csproj" />
   </ItemGroup>
 
 </Project>

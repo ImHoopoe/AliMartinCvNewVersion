@@ -94,16 +94,17 @@ namespace AliMartinCv.Areas.Admin.Controllers
                 list.Add(selectItem);
             }
             UpdateArticleDto updateArticleDto = new UpdateArticleDto()
-            { ArticleGroups = list ,
-               Description = article.Description,
-               ShortDescription = article.ShortDescription,
-               Id = id,
-               Slug = article.Slug,
+            {
+                ArticleGroups = list,
+                Description = article.Description,
+                ShortDescription = article.ShortDescription,
+                Id = id,
+                Slug = article.Slug,
                 Tags = string.Join(",", article.Tags),
                 Title = article.Title,
-            
+
             };
-            
+
             return View(updateArticleDto);
 
         }
@@ -129,6 +130,45 @@ namespace AliMartinCv.Areas.Admin.Controllers
 
             }
             var (success, message) = await _articleService.UpdateAsync(updateArticleDto);
+            if (!success)
+            {
+                TempData["Error"] = message;
+                return RedirectToAction(nameof(Index));
+            }
+            TempData["Message"] = message;
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (id == null)
+            {
+                throw new Exception("به آیدی دست نزنید با تشکر");
+            }
+            var (exists, message) = await _articleService.IsExists(id);
+            if (!exists)
+            {
+                TempData["Error"] = message;
+                return RedirectToAction(nameof(Index));
+            }
+            var (Entity, msg) = await _articleService.GetArticle(id);
+            DeleteArticleDto deleteArticleDto = new DeleteArticleDto
+            {
+                Id = id,
+                Title = Entity.Title
+
+            };
+            return View(deleteArticleDto);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(DeleteArticleDto deleteArticleDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(deleteArticleDto);
+            }
+            var (success, message) = await _articleService.DeleteAsync(deleteArticleDto);
             if (!success)
             {
                 TempData["Error"] = message;
