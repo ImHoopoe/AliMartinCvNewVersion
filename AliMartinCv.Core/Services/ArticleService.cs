@@ -2,6 +2,7 @@
 using AliMartinCv.Core.Interfaces.Repositories;
 using AliMartinCv.Core.Interfaces.Service;
 using AliMartinCv.Core.ViewModels.Article;
+using AliMartinCv.Tools;
 using AliMartinCv.Tools.Time;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace AliMartinCv.Core.Services
                 Slug = create.Slug,
                 Tags = create.Tags,
                 Title = create.Title,
-                //TODO : Save Image
+                Thumbnail = await create.Thumbnail.SaveImage() ?? "Defualt.png",
 
             };
             bool success = await _articleRepository.CreateAsync(article);
@@ -50,6 +51,7 @@ namespace AliMartinCv.Core.Services
                 return (false, "مقاله یافت نشد");
             }
             var article = await _articleRepository.GetArticleAsync(delete.Id);
+            FileService.DeleteImage(article.Thumbnail);
             bool success = await _articleRepository.DeleteAsync(article);
             if (!success)
             {
@@ -85,6 +87,7 @@ namespace AliMartinCv.Core.Services
                 Title = article.Title,
                 LastUpdate = article.LastUpdate.ToString(),
                 //ToDo : Convert To Shmsi
+
             };
             return (articleDto, null);
         }
@@ -125,7 +128,7 @@ namespace AliMartinCv.Core.Services
             {
                 return (false, "مقاله یافت نیافت");
             }
-            return (true,null);
+            return (true, null);
         }
 
         public async Task<(bool Success, string? Message)> UpdateAsync(UpdateArticleDto update)
@@ -143,6 +146,11 @@ namespace AliMartinCv.Core.Services
             article.ShortDescription = update.ShortDescription;
             article.ArticleGroupId = update.ArticleGroupId;
             article.LastUpdate = DateTimeOffset.Now;
+            if (update.Thumbnail != null && update.Thumbnail.Length > 0)
+            {
+                FileService.DeleteImage(article.Thumbnail);
+                article.Thumbnail = await update.Thumbnail.SaveImage();
+            }
             bool success = await _articleRepository.UpdateAsync(article);
             if (!success)
             {

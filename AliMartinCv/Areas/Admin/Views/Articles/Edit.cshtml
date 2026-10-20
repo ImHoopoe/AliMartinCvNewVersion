@@ -4,7 +4,7 @@
 }
 @model UpdateArticleDto
 
-<form method="post" asp-action="Edit"asp-controller="Articles">
+<form method="post" asp-action="Edit"asp-controller="Articles" enctype="multipart/form-data">
     <div class="form-row">
         <input value="@Model.Id" asp-for="Id" readonly="readonly" hidden="hidden" />
         <div class="form-group col-md-6">
