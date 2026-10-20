@@ -13,9 +13,10 @@ namespace AliMartinCv.Core.Entities
         public required string ShortDescription { get; set; }
         public required string Description { get; set; }
         public required string Slug { get; set; }
-        public required int UserId { get; set; }
+        public int UserId { get; set; }
+        public string? Thumbnail { get; set; } = "project.png";
         #region Relations
-        public required User Creator { get; set; }
+        public User Creator { get; set; }
         #endregion
     }
 }

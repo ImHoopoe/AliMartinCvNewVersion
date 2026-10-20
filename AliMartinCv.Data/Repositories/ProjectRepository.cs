@@ -57,6 +57,11 @@ namespace AliMartinCv.Data.Repositories
             return await _context.Projects.ToListAsync();
         }
 
+        public async Task<bool> IsExists(int id)
+        {
+            return await _context.Projects.AnyAsync(p => p.Id == id);
+        }
+
         public async Task<bool> UpdateAsync(Project project)
         {
             try

@@ -13,6 +13,7 @@ namespace AliMartinCv.Core.Interfaces.Repositories
         Task<bool> DeleteAsync(Project project);
         Task<Project> GetProject(int id);
         Task<IEnumerable<Project>> GetProjectsAsync();
+        Task<bool> IsExists(int id);
 
     }
 }
