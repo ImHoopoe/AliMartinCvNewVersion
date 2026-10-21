@@ -32,7 +32,7 @@ namespace AliMartinCv.Core.Services
                 Slug = create.Slug,
                 Tags = create.Tags,
                 Title = create.Title,
-                Thumbnail = await create.Thumbnail.SaveImage() ?? "Defualt.png",
+                Thumbnail = await create.Thumbnail.SaveImage("/wwwroot/" + "/Images/" + "/Articles/") ?? "Defualt.png",
 
             };
             bool success = await _articleRepository.CreateAsync(article);
@@ -149,7 +149,7 @@ namespace AliMartinCv.Core.Services
             if (update.Thumbnail != null && update.Thumbnail.Length > 0)
             {
                 FileService.DeleteImage(article.Thumbnail);
-                article.Thumbnail = await update.Thumbnail.SaveImage();
+                article.Thumbnail = await update.Thumbnail.SaveImage("/wwwroot/" + "/Images/" + "/Articles/");
             }
             bool success = await _articleRepository.UpdateAsync(article);
             if (!success)

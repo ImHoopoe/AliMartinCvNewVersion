@@ -7,9 +7,9 @@ namespace AliMartinCv.Tools
 {
     public static class FileService
     {
-        public static async Task<string> SaveImage(this IFormFile file)
+        public static async Task<string> SaveImage(this IFormFile file,string dir)
         {
-            string path = Directory.GetCurrentDirectory() + "/wwwroot/" + "/Images/" + "/Articles/";
+            string path = Directory.GetCurrentDirectory() + dir;
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);

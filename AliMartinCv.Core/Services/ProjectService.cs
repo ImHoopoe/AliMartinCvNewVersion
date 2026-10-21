@@ -28,9 +28,9 @@ namespace AliMartinCv.Core.Services
                     Title = create.Title,
                     UserId = 1
                 };
-                if (create.Thumbnail!=null && create.Thumbnail.Length >0)
+                if (create.Thumbnail != null && create.Thumbnail.Length > 0)
                 {
-                    project.Thumbnail = await create.Thumbnail.SaveImage();
+                    project.Thumbnail = await create.Thumbnail.SaveImage("/wwwroot/" + "/Images/" + "/Projects/");
                 }
                 bool success = await _ProjectRepository.CreateAsync(project);
                 if (success)
@@ -74,8 +74,9 @@ namespace AliMartinCv.Core.Services
                 Id = entity.Id,
                 ShortDescription = entity.ShortDescription,
                 Slug = entity.Slug,
+                Thumbnail = entity.Thumbnail ?? "project.png"
             };
-            return (projectDto,null);
+            return (projectDto, null);
         }
 
         public async Task<(IEnumerable<ProjectDto> Projects, string? Message)> GetProjects()
@@ -92,6 +93,7 @@ namespace AliMartinCv.Core.Services
                     Id = project.Id,
                     ShortDescription = project.ShortDescription,
                     Slug = project.Slug,
+                    Thumbnail = project.Thumbnail ?? "project.png"
                 };
                 result.Add(projectDto);
             }
@@ -110,7 +112,7 @@ namespace AliMartinCv.Core.Services
 
         public async Task<(bool Success, string? Message)> UpdateAsync(UpdateProjectDto update)
         {
-            var (exists,message) = await IsExists(update.Id);
+            var (exists, message) = await IsExists(update.Id);
             if (!exists)
             {
                 return (false, "نداریم آقا !");
@@ -123,7 +125,7 @@ namespace AliMartinCv.Core.Services
             if (update.Thumbnail != null && update.Thumbnail.Length > 0)
             {
                 FileService.DeleteImage(entity.Thumbnail);
-                entity.Thumbnail = await update.Thumbnail.SaveImage();
+                entity.Thumbnail = await update.Thumbnail.SaveImage("/wwwroot/" + "/Images/" + "/Projects/");
             }
             bool success = await _ProjectRepository.UpdateAsync(entity);
             if (!success)

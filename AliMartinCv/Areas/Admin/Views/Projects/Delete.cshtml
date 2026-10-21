@@ -1,0 +1,15 @@
+﻿@using AliMartinCv.Core.ViewModels.Project
+@model DeleteProjectDto
+@{
+    Layout = "/areas/admin/views/shared/_Layout.cshtml";
+}
+<form asp-action="Delete" method="post">
+
+    <input readonly value="@Model.Id" asp-for="Id" hidden="hidden" />
+    <input readonly value="@Model.Title" asp-for="Title" hidden="hidden" />
+    <div class="alert alert-danger">
+        <p>آیا از حذف @Model.Title مطمئن هستید؟</p>
+        <a class="btn btn-outline-primary" asp-action="Index">بازگشت</a>
+        <button class="btn btn-outline-danger" type="submit">حذف</button>
+    </div>
+</form>

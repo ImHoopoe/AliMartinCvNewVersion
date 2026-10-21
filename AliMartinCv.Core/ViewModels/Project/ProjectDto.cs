@@ -14,6 +14,7 @@ namespace AliMartinCv.Core.ViewModels.Project
         public required string Description { get; set; }
         public required string Slug { get; set; }
         public required string Author { get; set; }
+        public required string Thumbnail { get; set; }
 
     }
 }
