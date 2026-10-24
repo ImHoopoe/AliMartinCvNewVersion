@@ -1,0 +1,42 @@
+﻿@using AliMartinCv.Core.ViewModels.Article
+@model List<ArticleDto>
+
+<section id="articles">
+    <div class="container">
+        <div class="section-head" data-reveal>
+            <p class="section-kicker">From the notebook</p>
+            <h2 class="section-title">Latest articles</h2>
+            <p class="section-lead">The original Razor section depended on a server-side blog model. This standalone version keeps the interaction but uses representative static cards until real posts are connected.</p>
+        </div>
+        <div class="filter-bar" role="group" aria-label="Filter articles" data-reveal>
+            <button class="filter-btn active" type="button" data-filter="all">All posts</button>
+            <button class="filter-btn" type="button" data-filter="technology">Technology</button>
+            <button class="filter-btn" type="button" data-filter="webdev">Web development</button>
+            <button class="filter-btn" type="button" data-filter="aspnet">ASP.NET</button>
+        </div>
+        <div class="blog-grid">
+            @foreach (var article in Model)
+            {
+                <article class="blog-card skeleton-item" data-category="aspnet" data-reveal>
+                    <div class="blog-meta">
+                        <span class="blog-category">@article.ArticleGroup</span>
+                        <span>8 min read</span>
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center">
+                        <img class="img-fluid img-thumbnail"
+                             src="/Images/articles/@article.Thumbnail"
+                             alt="@article.Title" />
+                    </div>
+
+                        <h3>@article.Title</h3>
+                        <p>@article.ShortDescription</p>
+
+                    <button class="btn btn-quiet" type="button">
+                        Read article →
+                    </button>
+                </article>
+            }
+        </div>
+    </div>
+</section>

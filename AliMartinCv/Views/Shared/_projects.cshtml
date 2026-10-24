@@ -1,0 +1,27 @@
+﻿@using AliMartinCv.Core.ViewModels.Project
+@model List<ProjectDto>
+
+<section id="projects">
+    <div class="container">
+        <div class="section-head" data-reveal>
+            <p class="section-kicker">Selected work</p>
+            <h2 class="section-title">Projects that turn complexity into a usable product.</h2>
+            <p class="section-lead">A smaller portfolio with enough context to understand what each project does and where it lives.</p>
+        </div>
+        <div class="project-grid">
+            @{
+                foreach(var project in Model)
+                {
+                    <article class="project-card skeleton-item" data-reveal>
+                        <div class="project-art samro"><span class="project-status">Active</span><div class="art-copy"><strong>@project.Title</strong><span>@project.Author</span></div></div>
+                        <div class="project-body">
+                            <div class="project-topline"><div><h3>@project.Title</h3></div></div>
+                            <p>@project.ShortDescription</p>
+                            <div class="project-actions"><a class="btn btn-secondary" href="https://samro.ir" target="_blank" rel="noopener noreferrer">Visit site <span aria-hidden="true">↗</span></a><button class="btn btn-quiet" type="button" data-project="samro">Project details →</button></div>
+                        </div>
+                    </article>
+                }
+            }
+        </div>
+    </div>
+</section>
