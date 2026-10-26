@@ -4,6 +4,7 @@
     Layout = "/areas/admin/views/shared/_Layout.cshtml";
 }
 <form method="post" asp-action="Create">
+    @Html.AntiForgeryToken()
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputEmail4">نام گروه خبری</label>

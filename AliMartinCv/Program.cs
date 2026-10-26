@@ -23,6 +23,12 @@ builder.Services.AddScoped<IArticleGroup, ArticleGroupService>();
 builder.Services.AddScoped<IArticle, ArticleService>();
 builder.Services.AddScoped<IProject, ProjectService>();
 
+builder.Services.AddAntiforgery(options =>
+{
+    options.FormFieldName = "AntiforgeryFieldname";
+    options.HeaderName = "CSRFCheck";
+    options.SuppressXFrameOptionsHeader = false;
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

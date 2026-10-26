@@ -20,9 +20,19 @@
         </div>
     }
 }
-<div class="row">
-    <a asp-controller="Articles" asp-action="Create" class="btn btn-outline-success col-1"><i class="fa fa-plus" aria-hidden="true"></i></a>
-</div>
+@section _Nav {
+    <div class="page-heading">
+        <div>
+            <div class="page-kicker">لایه‌ی مدیریت</div>
+            <h1 class="page-title">مدیریت مقالات ها</h1>
+            <p class="page-subtitle">ساخت و ویرایش مقاله ها</p>
+        </div>
+        <div class="page-actions">
+            <a asp-controller="Articles" asp-action="Create" class="btn btn-outline-success col-1 btn btn-outline-success col-1  px-5"><i class="fa fa-plus" aria-hidden="true"></i></a>
+        </div>
+    </div>
+}
+
 <div>
     <div class="row">
         @{

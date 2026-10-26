@@ -90,6 +90,7 @@ namespace AliMartinCv.Areas.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(UpdateArticleGroupDto updateArticleGroupDto)
         {
             if (!ModelState.IsValid)

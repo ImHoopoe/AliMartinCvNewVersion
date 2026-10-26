@@ -4,7 +4,7 @@
     Layout = "/areas/admin/views/shared/_Layout.cshtml";
 }
 @{
-    if(TempData["Error"]!= null)
+    if (TempData["Error"] != null)
     {
         <div class="alert alert-danger">
             <p>@TempData["Error"]</p>
@@ -20,9 +20,19 @@
         </div>
     }
 }
-<div class="row">
-    <a asp-controller="ArticleGroup" asp-action="Create" class="btn btn-outline-success col-1"><i class="fa fa-plus" aria-hidden="true"></i></a>
-</div>
+@section _Nav {
+    <div class="page-heading">
+        <div>
+            <div class="page-kicker">لایه‌ی مدیریت</div>
+            <h1 class="page-title">مدیریت گروه ها</h1>
+            <p class="page-subtitle">ساخت و ویرایش گروه ها</p>
+        </div>
+        <div class="page-actions">
+            <a asp-controller="ArticleGroup" asp-action="Create" class="btn btn-outline-success col-1 btn btn-outline-success col-1  px-5"><i class="fa fa-plus" aria-hidden="true"></i></a>
+        </div>
+    </div>
+}
+
 <table class="table">
     <thead class="thead-dark">
         <tr>
@@ -32,16 +42,16 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var articleGroup in Model.Where(ag=> ag.ParentId==null))
+        @foreach (var articleGroup in Model.Where(ag => ag.ParentId == null))
         {
             <tr>
                 <td>@articleGroup.Title</td>
                 <td>
-                    @foreach (var child in Model.Where(cg=> cg.ParentId==articleGroup.Id))
+                    @foreach (var child in Model.Where(cg => cg.ParentId == articleGroup.Id))
                     {
                         <p>@child.Title</p>
                         <a asp-controller="ArticleGroup" asp-action="Detail" asp-route-id="@child.Id" class="btn btn-sm btn-outline-primary"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                        <a asp-controller="ArticleGroup" asp-action="Edit" asp-route-id ="@child.Id" class="btn btn-sm btn-outline-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a asp-controller="ArticleGroup" asp-action="Edit" asp-route-id="@child.Id" class="btn btn-sm btn-outline-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                         <a asp-controller="ArticleGroup" asp-action="Delete" asp-route-id="@child.Id" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     }
                 </td>
@@ -52,7 +62,7 @@
                 </td>
             </tr>
         }
-        
+
     </tbody>
 </table>
 
